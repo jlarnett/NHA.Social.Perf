@@ -1,0 +1,21 @@
+{
+  "name": "performancetesting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/tests/test.ts",
+  "scripts": {
+    "build": "esbuild src/tests/test.ts --bundle --format=esm --platform=neutral --outfile=dist/test.js --external:k6*",
+    "test": "k6 run dist/test.js"
+  },
+  "private": true,
+  "dependencies": {
+    "@faker-js/faker": "^10.4.0",
+    "k6": "^0.0.0"
+  },
+  "devDependencies": {
+    "@types/faker": "^6.6.8",
+    "@types/k6": "^2.0.0",
+    "esbuild": "^0.28.0",
+    "typescript": "^6.0.3"
+  }
+}

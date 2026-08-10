@@ -7,7 +7,12 @@ class SearchApi extends BaseApi {
     }
 
     getSearch(searchString: string) {
-        return http.get(`${this.apiUrl}/${searchString}`)
+        return http.get(`${this.apiUrl}/${searchString}`,
+            {
+                tags: {
+                    name: 'search',
+                }
+            })
     }
 }
 

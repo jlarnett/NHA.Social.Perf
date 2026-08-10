@@ -2,6 +2,7 @@ import http from 'k6/http';
 
 class BaseApi {
     apiUrl = 'https://localhost:44385/api/';
+    //apiUrl = 'https://nhaindustries.azurewebsites.net/api/';
 
     constructor(url = "") {
         this.apiUrl = `${this.apiUrl}${url}`
@@ -11,7 +12,7 @@ class BaseApi {
         return http.get(this.apiUrl);
     }
 
-    buildParameterUrl(parameterMap: Record<any, any>): string {
+    buildUrlParameters(parameterMap: Record<any, any>): string {
         if (!parameterMap || Object.keys(parameterMap).length === 0) {
             return '';
         }

@@ -2,8 +2,8 @@ import BaseApi from "./api";
 import http from "k6/http";
 
 class SearchApi extends BaseApi {
-    constructor() {
-        super('Search');
+    constructor(cookieToken: string) {
+        super('Search', cookieToken);
     }
 
     getSearch(searchString: string) {

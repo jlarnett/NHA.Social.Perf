@@ -1,15 +1,18 @@
 import http from 'k6/http';
 
 class BasePage {
-    baseUrl = 'https://localhost:44385/';
-    //baseUrl = 'https://nhaindustries.azurewebsites.net/';
+    baseUrl = `${__ENV.BASE_URL}/`;
+    readonly cookieToken?: string;
 
-    constructor(page = "") {
-        this.baseUrl = `${this.baseUrl}${page}`
+    constructor(page = "", cookieToken?: string) {
+        this.baseUrl = `${this.baseUrl}${page}`;
+        this.cookieToken = cookieToken;
     }
 
     get() {
-        return http.get(this.baseUrl);
+        return http.get(this.baseUrl, {
+            headers: this.cookieToken ? { 'Cookie': this.cookieToken } : undefined
+        });
     }
 }
 

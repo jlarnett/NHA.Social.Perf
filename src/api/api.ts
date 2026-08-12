@@ -1,15 +1,18 @@
 import http from 'k6/http';
 
 class BaseApi {
-    apiUrl = 'https://localhost:44385/api/';
-    //apiUrl = 'https://nhaindustries.azurewebsites.net/api/';
+    apiUrl = `${__ENV.BASE_URL}/api/`;
+    readonly cookieToken?: string;
 
-    constructor(url = "") {
+    constructor(url = "", cookieToken?: string) {
         this.apiUrl = `${this.apiUrl}${url}`
+        this.cookieToken = cookieToken;
     }
 
     get() {
-        return http.get(this.apiUrl);
+        return http.get(this.apiUrl, {
+            headers: this.cookieToken ? { 'Cookie': this.cookieToken } : undefined
+        });
     }
 
     buildUrlParameters(parameterMap: Record<any, any>): string {

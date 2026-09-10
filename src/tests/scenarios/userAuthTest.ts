@@ -5,7 +5,7 @@ import type { SetupData } from "../types";
 
 export function userAuthTest(data: SetupData): void {
     const userApi = new UserApi(data.cookieToken);
-    const result = userApi.authenticate(testConfig.testUserEmail, testConfig.testUserPassword, "true");
+    const result = userApi.authenticate(data.userEmail, testConfig.testUserPassword, "true");
 
     check(result, {
         "User Auth Successful": (r) => r.status === 200,

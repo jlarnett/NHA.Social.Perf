@@ -20,6 +20,23 @@ class UserApi extends BaseApi {
                 }
             });
     }
+
+    createUser(email: string,  password: string, confirmPassword: string, displayName?: string) {
+        return http.post(`${this.apiUrl}/register`,
+            {
+                email: email,
+                password: password,
+                confirmPassword: confirmPassword,
+                displayName: displayName ?? '',
+            },
+            {
+                tags: {
+                    name: 'user',
+                }
+            });
+    }
+
+
 }
 
 export default UserApi;

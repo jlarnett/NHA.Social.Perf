@@ -2,7 +2,7 @@ import BaseApi from "./api";
 import http from "k6/http";
 
 const imageUploadBytes =
-    open("..\\src\\support\\test-files\\test-png.png", "b");
+    open("../src/support/test-files/test-png.png", "b");
 
 class socialApi extends BaseApi {
 

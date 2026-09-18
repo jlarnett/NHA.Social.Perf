@@ -11,7 +11,7 @@ class AnimeApi extends BaseApi {
      * @param pageNumber
      */
     getAnimePage(pageNumber: number) {
-        const url = `${this.apiUrl}${this.buildUrlParameters({pageNumber: pageNumber})}`
+        const url = `${this.apiUrl}/list${this.buildUrlParameters({pageNumber: pageNumber})}`
         return http.get(url, {
             tags: {
                 name: 'anime',
